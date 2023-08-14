@@ -50,7 +50,7 @@ export class FTPSyncProvider implements ISyncProvider {
 
     /**
      * Converts a file path (ex: "folder/otherfolder/file.txt") to an array of folder and a file path
-     * @param fullPath 
+     * @param fullPath
      */
     private getFileBreadcrumbs(fullPath: string): IFilePath {
         // todo see if this regex will work for nonstandard folder names
@@ -182,8 +182,8 @@ export class FTPSyncProvider implements ISyncProvider {
 
         this.logger.all(`----------------------------------------------------------------`);
         this.logger.all(`🎉 Sync complete. Saving current server state to "${this.serverPath + this.stateName}"`);
-        if (this.dryRun === false) {
+        // if (this.dryRun === false) {
             await retryRequest(this.logger, async () => await this.client.uploadFrom(this.localPath + this.stateName, this.stateName));
-        }
+        // }
     }
 }
